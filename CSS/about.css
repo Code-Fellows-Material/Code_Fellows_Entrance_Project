@@ -3,7 +3,7 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100vh;
+  flex: 1;
   background-image: url("https://images.unsplash.com/photo-1547044479-59ce6c0a784a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80");
   background-size: cover;
 }

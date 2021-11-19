@@ -1,9 +1,13 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: #4EA8DE;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;       /* body takes whole viewport's height */
 }
 #header {
   display: flex;
+  width: 100%;
   margin: 0 auto;
   align-items: center;
   border-bottom: 2px solid rgb(197, 197, 197);

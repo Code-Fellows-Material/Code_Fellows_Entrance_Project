@@ -4,7 +4,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+	flex: 1;
     background-image: url('https://images.unsplash.com/photo-1564510714747-69c3bc1fab41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80" alt="image of habit tracking journal');
     background-size: cover;
 }
@@ -39,8 +39,6 @@ main {
 #check {
 	display: none;
 }
-
-
 
 input{
     border: 1px solid rgba(133, 133, 133, 0.5);

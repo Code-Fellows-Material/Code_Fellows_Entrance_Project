@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
     <header id="header">
         <section class="header-items" id="header-link">
             <a href="#"><i id="home-icon" class="lni lni-book"></i></a>
@@ -40,6 +39,13 @@
     </header>
     <main id="main">
         <h2 id="main-heading">HabiTracker</h2>
+        <section id="add-habit-section">
+            <form id="habit-input-form">
+                <label id="habit-label" for="habit">Track a new habit: </label>
+                <input id="habit-input" type="text" name="habit" placeholder="Habit" required="">
+                <button id="habit-button">Track</button>
+            </form>
+        </section>
         <section id="tracker-section">
             <container id="habit-container">
                 <div class="cell title-cell">

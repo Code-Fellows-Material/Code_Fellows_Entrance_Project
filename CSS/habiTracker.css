@@ -1,9 +1,10 @@
+
 main {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
-  height: 100vh;
+  flex: 1;
   background-image: url("https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80");
   background-size: cover;
 }
@@ -14,7 +15,7 @@ main {
   display: flex;
   font-size: 4em;
   justify-content: center;
-  padding: 60px 0 60px;
+  padding: 10px 0 10px;
 }
 
 #tracker-section {
@@ -70,4 +71,67 @@ main {
 }
 .tracking-cell {
   background: blueviolet;
+}
+
+#add-habit-section {
+    background-color: rgba(214, 218, 214, 0.1);
+    width: 800px;
+    height: 50px;
+    border-radius: 15px;
+    border: 1px solid grey;
+    box-shadow: 3px 6px 16px rgb(46, 46, 46);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#habit-input-form{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#habit-label{
+    font-size: 2em;
+    margin: auto 1rem;
+}
+
+#habit-input{
+    border: 1px solid rgba(133, 133, 133, 0.5);
+    box-shadow: 2px 2px 4px rgb(85, 84, 84);
+	border-radius: 8px;
+    background: white;
+	width: 30%;
+	height: 30px;
+	justify-content: center;
+	display: flex;
+	margin-left: 12px;
+	/* padding: 10px; */
+}
+
+#habit-button{
+    margin: auto auto;
+	width: 15%;
+	height: 30px;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #249dc2;
+	font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 1px black;
+	outline: none;
+    border: none;
+    box-shadow:  2px 2px 4px rgb(85, 84, 84);
+	border-radius: 8px;
+	transition: .4s ease-in;
+	cursor: pointer;
+}
+
+#habit-button:hover{
+	background: rgb(110, 50, 206);
 }
