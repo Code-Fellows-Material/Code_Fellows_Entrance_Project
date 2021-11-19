@@ -1,3 +1,5 @@
+
+
 const monthCell = document.querySelector('.month-cell');
 fillMonth(monthCell);
 
