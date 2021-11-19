@@ -1,0 +1,107 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+  background-image: url("https://images.unsplash.com/photo-1547044479-59ce6c0a784a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80");
+  background-size: cover;
+}
+
+#about-section {
+  background-color: rgba(214, 218, 214, 0.1);
+  width: 800px;
+  height: 600px;
+  border-radius: 15px;
+  border: 1px solid grey;
+  box-shadow: 6px 22px 48px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#main-heading {
+  color: rgb(110, 50, 206);
+  text-shadow: 3px 10px 10px rgb(85, 84, 84);
+  display: flex;
+  font-size: 3.3em;
+  padding: 60px 0 80px;
+}
+
+#about-name{
+    margin-top: 25px;
+    font-size: 2.5em;
+    color: Black;
+    text-shadow: 3px 10px 10px rgb(85, 84, 84);
+
+}
+
+hr{
+    color: black; 
+    border-style: inset; 
+    border-width: 1px; 
+    margin: 0.5em auto;
+    width: 90%;
+}
+
+#self-photo {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+article{
+    background-color: rgba(214, 218, 214, .8);
+    width: 700px;
+    height: 200px;
+    border-radius: 15px;
+    border: 1px solid grey;
+    box-shadow: 6px 22px 48px #000;
+    display: flex;
+    margin-bottom: 30px;
+
+}
+
+p {
+    margin: 10px;
+    align-self: center;
+    font-size: 1.2em;
+}
+
+/*Flip card modified from example found at https://www.w3schools.com/howto/howto_css_flip_card.asp*/
+
+.flip-card {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+
+/* Style the back side */
+.flip-card-back {
+  transform: rotateY(180deg);
+}

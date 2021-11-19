@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/css_reset.css">
+    <link rel="stylesheet" href="./CSS/shared.css">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
     <title>Welcome</title>
 </head>
+
 <body>
-    <h1>Welcome to HabiTrack</h1>
+    <header id="header">
+        <section class="header-items" id="header-link">
+            <a href="/about.html"><i id="home-icon" class="lni lni-book"></i></a>
+        </section>
+        <section class="header-items" id="header-title">
+            <h3>HabiTrac</h3>
+        </section>
+        <nav class="header-items" id="nav">
+            <ul id="nav-list">
+                <li class="nav-items">
+                    <a href="/about.html">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main">
+        <h2 id="main-heading">A simple monthly habit tracking app to help you get the most out of your day.</h2>
+        <container id="login-form">
+            <input type="checkbox" id="check">
+            <section class="signup">
+                <form id="signup-form">
+                    <label class="label" id="sign-up-label" for="check">Sign Up</label>
+                    <input id="sign-up-user" type="text" placeholder="Username" required="">
+                    <input id="sign-up-pass" type="password" placeholder="Password" required="">
+                    <button id="signUpButton">Sign Up</button>
+                </form>
+            </section>
+            <section class="login">
+                <form id="login-form">
+                    <label class="label" id="login-label" for="check">Log In</label>
+                    <input id="login-user" type="text" name="txt" placeholder="User name" required="">
+                    <input id="login-pass" type="password" name="password" placeholder="Password" required="">
+                    <button id="loginButton">Log In</button>
+                </form>
+            </section>
+        </container>
+    </main>
+    <script src="./JS/index.js"></script>
 </body>
+
 </html>
