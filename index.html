@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="./CSS/css_reset.css">
     <link rel="stylesheet" href="./CSS/shared.css">
     <link rel="stylesheet" href="./CSS/index.css">
-    <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css"> 
+    <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
     <title>Welcome</title>
 </head>
 
 <body>
     <header id="header">
-        <section class="header-items" id="header-link">   
+        <section class="header-items" id="header-link">
             <a href="/index.html"><i id="home-icon" class="lni lni-book"></i></a>
         </section>
         <section class="header-items" id="header-title">
@@ -43,20 +43,18 @@
             <input type="checkbox" id="check">
             <section class="signup">
                 <form id="signup-form">
-                    <label for="check">Sign Up</label>
-                    <input id="sign-up-user" type="text"  placeholder="Username" required="">
+                    <label class="label" id="sign-up-label" for="check">Sign Up</label>
+                    <input id="sign-up-user" type="text" placeholder="Username" required="">
                     <input id="sign-up-pass" type="password" placeholder="Password" required="">
-                    <button>Sign Up</button>
+                    <button id="signUpButton">Sign Up</button>
                 </form>
             </section>
             <section class="login">
-                <form>
-                    <label for="check">Log In</label>
-                    <input type="text" name="txt" placeholder="User name" required="">
-                    <input type="password" name="password" placeholder="Password" required="">
-                    <div class="button-div">
-                        <button>Log In</button>
-                    </div>
+                <form id="login-form">
+                    <label class="label" id="login-label" for="check">Log In</label>
+                    <input id="login-user" type="text" name="txt" placeholder="User name" required="">
+                    <input id="login-pass" type="password" name="password" placeholder="Password" required="">
+                    <button id="loginButton">Log In</button>
                 </form>
             </section>
         </container>

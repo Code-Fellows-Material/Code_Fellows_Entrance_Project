@@ -64,6 +64,14 @@ label{
 	transition: 1s ease-in-out;
 }
 
+.warning{
+	color: rgb(0, 0, 0);
+    display: flex;
+	margin: 2px;
+	font-size: 1.2em;
+	justify-content: center;
+}
+
 button{
 	width: 60%;
 	height: 60px;
@@ -83,27 +91,33 @@ button{
 	cursor: pointer;
 }
 
+.button-div{
+    padding-top: 5px;
+}
+
+
 button:hover{
 	background: rgb(110, 50, 206);
 }
 
 
 .login{
-	height: 450px;
+	height: 500px;
 	background: linear-gradient(to left, #3096c5, #5e56b9, #7979cc);
 	border-radius: 8px;
-	transform: translateY(-180px);
+	transform: translateY(-150px);
 	transition: .8s ease-in-out;
 }
 .login label{
     padding-top: 5px;
-    margin-bottom: 30px;
+	margin-top: 20px;
+    margin-bottom:30px;
 	color: white;
 	transform: scale(.6);
 }
 
 #check:checked ~ .login{
-	transform: translateY(-500px);
+	transform: translateY(-450px);
 }
 #check:checked ~ .login label{
 	transform: scale(1);
