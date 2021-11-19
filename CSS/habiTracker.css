@@ -18,6 +18,15 @@ main {
   padding: 10px 0 10px;
 }
 
+#name-heading{
+  color: black;
+  /* text-shadow: 3px 10px 10px rgb(85, 84, 84); */
+  display: flex;
+  font-size: 2em;
+  justify-content: center;
+  padding: 10px 0 10px;
+}
+
 #tracker-section {
   background-color: rgba(214, 218, 214, 0.9);
   width: 80%;

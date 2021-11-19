@@ -1,4 +1,6 @@
-
+let currentUser = JSON.parse(localStorage.currentUser);
+console.log(currentUser);
+document.querySelector('#name-heading').innerText = currentUser.username;
 
 const monthCell = document.querySelector('.month-cell');
 fillMonth(monthCell);
