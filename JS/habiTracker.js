@@ -31,7 +31,7 @@ document.querySelector('#name-heading').innerText = userArray[currentUserIndex].
 class Habit {
     constructor(habit) {
         this.habit = habit;
-        this.habitData = {};
+        this.habitData = [];
     }
 }
 
