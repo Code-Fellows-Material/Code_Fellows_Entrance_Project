@@ -62,15 +62,22 @@ main {
   border: 1px solid black;
   background: rgb(192, 170, 162);
   display: flex;
+  width: 1/32%;
   justify-content: center;
   align-items: center;
 }
 
 .habit-cell {
   background: royalblue;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-rows: repeat(10, 1fr);
 }
 .tracking-cell {
   background: blueviolet;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
 }
 
 #add-habit-section {
