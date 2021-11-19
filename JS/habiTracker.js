@@ -1,15 +1,28 @@
 const monthCell = document.querySelector('.month-cell');
 fillMonth(monthCell);
 
-function fillMonth(cell){
+function fillMonth(targetCell){
     for(let i = 0; i < 31; i++){
     const newDiv = document.createElement('div');
     newDiv.classList.add('cell');
     newDiv.classList.add('month-day-cell');
     newDiv.innerText = i+1;
-    cell.appendChild(newDiv);
+    targetCell.appendChild(newDiv);
     }
 }
+
+function fillGrid(targetCell){
+    for(let i = 0; i < 31; i++){
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('cell');
+    newDiv.classList.add('month-day-cell');
+    newDiv.addEventListener('click', () => {
+        newDiv.style.backgroundColor = 'black';
+    })
+    targetCell.appendChild(newDiv);
+    }
+}
+
 
 // Event listener for habit input form
 const form = document.querySelector('#habit-input-form');
@@ -36,5 +49,5 @@ function createNewHabitGrid(){
     const newDiv = document.createElement('div');
     newDiv.classList.add('month-cell');
     habitCell.appendChild(newDiv);
-    fillMonth(newDiv);
+    fillGrid(newDiv);
 }
