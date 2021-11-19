@@ -2,17 +2,18 @@
 
 let userArray = [];
 let currentUser = {};
+
 if(localStorage.userArray){
     userArray = JSON.parse(localStorage.userArray);
 }
 console.log(`Current number of registered users: ${userArray.length}`);
 console.log(userArray);
 
-class userProfile {
+class UserProfile {
     constructor(username, password) {
         this.username = username;
         this.password = password;
-        this.data = {};
+        this.data = [];
     }
 }
 
@@ -23,10 +24,15 @@ signUpForm.addEventListener('click', (e) => {
     e.preventDefault(); 
     console.log("sign up event"); 
     const newUser = createNewUser();
-    newUser && userArray.push(newUser);
-    localStorage.setItem('userArray', JSON.stringify(userArray));
-    
-});
+    if(newUser && userArray.push(newUser)){
+        localStorage.setItem('userArray', JSON.stringify(userArray));
+        const userInput = document.querySelector('#sign-up-user');
+        let userIndex = indexOfUserCheck(userInput.value);
+        setCurrentUser(userIndex);
+        window.location.href = './habiTracker.html';
+    } 
+} 
+);
 
 const loginForm = document.querySelector('#loginButton');
 
@@ -46,14 +52,13 @@ function createNewUser(){
         const newP = document.createElement('p');
         newP.classList.add('warning');
         newP.innerText = `The username \"${userInput.value}\" already exists!`;
+        label.style.margin = '40px';
         label.insertAdjacentElement('afterend', newP);
         userInput.value = "";
         passInput.value = "";
         return false;
     } else {
-        const newUser = new userProfile(userInput.value, passInput.value);
-        userInput.value = "";
-        passInput.value = "";
+        const newUser = new UserProfile(userInput.value, passInput.value);
         return newUser;
     }
 }
@@ -85,6 +90,7 @@ function loginUser(){
         const newP = document.createElement('p');
         newP.classList.add('warning');
         newP.innerText = `The username \"${userInput.value}\" does not exists!`;
+        label.style.marginBottom = '10px';
         label.insertAdjacentElement('afterend', newP);
     } else if (passCheck(userIndex, passInput.value)){
         setCurrentUser(userIndex);
@@ -128,4 +134,5 @@ function passCheck(index, passInput){
 function setCurrentUser(index){
     currentUser = userArray[index];
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    localStorage.setItem('currentUserIndex', JSON.stringify(index));
 }
