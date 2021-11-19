@@ -77,6 +77,7 @@ function userExistenceCheck(userName){
 function loginUser(){
     const userInput = document.querySelector('#login-user');
     const passInput = document.querySelector('#login-pass');
+    let userIndex = indexOfUserCheck(userInput.value);
     if(!userExistenceCheck(userInput.value)){
         const label = document.querySelector('#login-label');
         const oldP = document.querySelector('.warning');
@@ -85,10 +86,9 @@ function loginUser(){
         newP.classList.add('warning');
         newP.innerText = `The username \"${userInput.value}\" does not exists!`;
         label.insertAdjacentElement('afterend', newP);
-        console.log('herein');
-    } else if (passCheck(indexOfUserCheck(userInput.value), passInput.value)){
-        console.log(indexOfUserCheck(userInput.value));
-        console.log('checks out');
+    } else if (passCheck(userIndex, passInput.value)){
+        setCurrentUser(userIndex);
+        window.location.href = './habiTracker.html';
     } else {
         const label = document.querySelector('#login-label');
         const oldP = document.querySelector('.warning');
@@ -123,4 +123,9 @@ function passCheck(index, passInput){
         }
         console.log('password does not match');
     return false;
+}
+
+function setCurrentUser(index){
+    currentUser = userArray[index];
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
 }
