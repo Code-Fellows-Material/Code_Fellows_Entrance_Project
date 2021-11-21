@@ -46,55 +46,107 @@ main {
   display: grid;
   grid-template-columns: 1fr 9fr;
   grid-template-rows: 1fr 9fr;
-  /* grid-gap: 10px 10px;  */
+  grid-gap: 10px 10px;
 }
 
 .cell {
   color: white;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: center;
 }
 .title-cell {
-  background: deepskyblue;
+  background: rgba(0, 191, 255, 0.6);
   display: flex;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 0.2em;
+  text-shadow: 1px 1px 1px rgb(53, 53, 53);
+  box-shadow: 3px 3px 3px rgb(131, 131, 131);
   justify-content: center;
   align-items: center;
+  border-radius: 10%;
+  border: 2px solid rgb(168, 168, 168);
+  width: 134px;
 }
 .month-cell {
-  background: rgb(182, 182, 182);
   display: grid;
   grid-template-columns: repeat(31, 1fr);
+  grid-gap: 4px 4px;
+}
+
+.top-month-cell {
+  border: 2px solid rgb(168, 168, 168);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 3px 3px 3px rgb(131, 131, 131);
 }
 
 .month-day-cell {
   border: 1px solid black;
-  background: rgb(192, 170, 162);
+  background: rgba(65, 62, 61, 0.1);
   display: flex;
   width: 1/32%;
   justify-content: center;
   align-items: center;
+  border-radius: 10%;
+  cursor: default;
+  transition: 0.5s all;
 }
 
 .selected-month-day-cell {
   border: 1px solid black;
-  background: rgb(0, 241, 0);
+  background: #5e56b9;
+  box-shadow: 3px 3px 3px rgb(131, 131, 131);
   display: flex;
   width: 1/32%;
   justify-content: center;
   align-items: center;
+  border-radius: 10%;
+  cursor: pointer;
+  transition: 0.5s all;
 }
 
+
 .habit-cell {
-  background: royalblue;
+  border: 2px solid rgb(168, 168, 168);
+  box-shadow: 3px 3px 3px rgb(131, 131, 131);
+  border-radius: 10px;
+  padding: 4px;
   display: grid;
   align-items: center;
   justify-content: center;
   grid-template-rows: repeat(10, 1fr);
+  grid-gap: 4px 0px;
 }
+
+.habit-cell-label {
+  background: rgba(0, 191, 255, 0.6);
+  box-shadow: 3px 3px 3px rgb(131, 131, 131);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 100%;
+  width: 120px;
+  max-height: 40px;
+}
+
+.inner-habit-cell-label {
+  flex-grow: 1;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .tracking-cell {
-  background: blueviolet;
+  border: 2px solid rgb(168, 168, 168);
+  box-shadow: 3px 3px 3px rgb(131, 131, 131);
+  border-radius: 10px;
+  padding: 4px;
   display: grid;
   grid-template-rows: repeat(10, 1fr);
+  grid-gap: 4px 4px;
 }
 
 #add-habit-section {
@@ -162,14 +214,25 @@ main {
   letter-spacing: 1.5px;
   display: block;
   color: #fff;
-  background: #ce5e5e;
-  font-size: 1em;
+  background: #d33434;
+  font-size: 1.2em;
   text-shadow: 1px 1px 1px black;
   outline: none;
   border: none;
   box-shadow: 2px 2px 4px rgb(85, 84, 84);
   border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s all;
 }
+
+
+#clear-button:active {
+  transform: scale(0.98);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+
 
 #habit-button {
   margin: auto auto;

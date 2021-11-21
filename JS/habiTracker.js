@@ -1,4 +1,3 @@
-
 //--------Classes, Variables, and Selectors------------------------
 
 class Habit {
@@ -35,17 +34,22 @@ clearButton.addEventListener('click', (e) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault(); // This will stop the form from navigating to the new page on submission.
-    const input = document.querySelector('#habit-input');
-    createNewHabit(input.value);
-    createNewHabitLabel(input.value);
-    createNewHabitGrid(habitCount);
-    habitCount++;
-    input.value = "";
+    if(habitCount <= 9){
+        const input = document.querySelector('#habit-input');
+        createNewHabit(input.value);
+        createNewHabitLabel(input.value);
+        createNewHabitGrid(habitCount);
+        habitCount++;
+        input.value = "";
+    } else {
+        document.querySelector('#name-heading').innerText = "Max Habits Reached";
+    }
 })
 
 //--------On Load------------------------
 
-document.querySelector('#name-heading').innerText = userArray[currentUserIndex].username;
+document.querySelector('#name-heading').innerText = `Current User: ${userArray[currentUserIndex].username}`;
+document.querySelector('#name-heading').style.textDecoration = 'underLine';
 
 fillMonth(monthCell);
 
@@ -58,11 +62,14 @@ for(let habit of userArray[currentUserIndex].habitArray){
 //--------Functions------------------------
 
 function fillMonth(targetCell){
+    targetCell.classList.add('top-month-cell');
     for(let i = 0; i < 31; i++){
     const newDiv = document.createElement('div');
     newDiv.classList.add('cell');
     newDiv.classList.add('month-day-cell');
     newDiv.innerText = i+1;
+    newDiv.style.textDecoration = 'underLine';
+    newDiv.style.backgroundColor = '#7979cc';
     targetCell.appendChild(newDiv);
     }
 }
@@ -71,7 +78,6 @@ function createNewHabit(habit){
     const newHabit = new Habit(habit);
     userArray[currentUserIndex].habitArray.push(newHabit);
     localStorage.setItem('userArray', JSON.stringify(userArray));
-    console.log("userArray[currentUserIndex].habitArray in createNewHabit funct: ", userArray[currentUserIndex].habitArray);
 }
 
 function createNewHabitGrid(habitIndex){
@@ -103,6 +109,12 @@ function createNewHabitLabel(habit){
     const habitCell = document.querySelector('.habit-cell');
     const newDiv = document.createElement('div');
     newDiv.classList.add('cell');
-    newDiv.innerText = habit;
+    newDiv.classList.add('habit-cell-label');
     habitCell.appendChild(newDiv);
+    const newInnerDiv = document.createElement('div');
+    newInnerDiv.classList.add('inner-habit-cell-label');
+    console.dir(newInnerDiv);
+    newInnerDiv.innerText = habit;
+    newDiv.appendChild(newInnerDiv);
+
 }
