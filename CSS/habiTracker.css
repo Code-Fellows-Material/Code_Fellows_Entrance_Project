@@ -75,6 +75,15 @@ main {
   align-items: center;
 }
 
+.selected-month-day-cell {
+  border: 1px solid black;
+  background: rgb(0, 241, 0);
+  display: flex;
+  width: 1/32%;
+  justify-content: center;
+  align-items: center;
+}
+
 .habit-cell {
   background: royalblue;
   display: grid;

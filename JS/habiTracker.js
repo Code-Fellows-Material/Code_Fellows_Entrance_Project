@@ -1,21 +1,16 @@
 
-////--------Classes, Variables, and Selectors------------------------
+//--------Classes, Variables, and Selectors------------------------
 
 class Habit {
-    constructor(habit) {
-        this.habit = habit;
+    constructor(habitName) {
+        this.habitName = habitName;
         this.habitData = [];
     }
 }
 
-let habitArray = [];
-
 let userArray = JSON.parse(localStorage.userArray);
-
-let currentUser = JSON.parse(localStorage.currentUser);
-
 let currentUserIndex = JSON.parse(localStorage.currentUserIndex);
-
+let habitCount = 0;
 
 const logoutButton = document.querySelector('#logout-button');
 const clearButton = document.querySelector('#clear-button');
@@ -24,7 +19,6 @@ const monthCell = document.querySelector('.month-cell');
 
 //--------Event listeners------------------------
 
-
 logoutButton.addEventListener('click', (e) => {
     e.preventDefault(); 
     currentUserIndex = null;
@@ -32,41 +26,36 @@ logoutButton.addEventListener('click', (e) => {
     window.location.href = './index.html';
 });
 
-
 clearButton.addEventListener('click', (e) => {
     e.preventDefault(); 
-    userArray[currentUserIndex].data = [];
+    userArray[currentUserIndex].habitArray = [];
     localStorage.setItem('userArray', JSON.stringify(userArray)); 
     window.location.href = './habiTracker.html';
 });
-
-
 
 form.addEventListener('submit', (e) => {
     e.preventDefault(); // This will stop the form from navigating to the new page on submission.
     const input = document.querySelector('#habit-input');
     createNewHabit(input.value);
     createNewHabitLabel(input.value);
-    createNewHabitGrid();
+    createNewHabitGrid(habitCount);
+    habitCount++;
     input.value = "";
 })
-
 
 //--------On Load------------------------
 
 document.querySelector('#name-heading').innerText = userArray[currentUserIndex].username;
-habitArray = currentUser.data;
+
 fillMonth(monthCell);
 
-let count = 0;
-for(let habit of userArray[currentUserIndex].data){
-    createNewHabitLabel(userArray[currentUserIndex].data[count].habit);
-    createNewHabitGrid();
-    count++;
+for(let habit of userArray[currentUserIndex].habitArray){
+    createNewHabitLabel(userArray[currentUserIndex].habitArray[habitCount].habitName);
+    createNewHabitGrid(habitCount);
+    habitCount++;
 }
 
 //--------Functions------------------------
-
 
 function fillMonth(targetCell){
     for(let i = 0; i < 31; i++){
@@ -78,31 +67,36 @@ function fillMonth(targetCell){
     }
 }
 
-function fillGrid(targetCell){
-    for(let i = 0; i < 31; i++){
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('cell');
-    newDiv.classList.add('month-day-cell');
-    newDiv.addEventListener('click', () => {
-        newDiv.style.backgroundColor = 'black';
-    })
-    targetCell.appendChild(newDiv);
-    }
-}
-
 function createNewHabit(habit){
     const newHabit = new Habit(habit);
-    userArray[currentUserIndex].data.push(newHabit);
+    userArray[currentUserIndex].habitArray.push(newHabit);
     localStorage.setItem('userArray', JSON.stringify(userArray));
-    console.log(habitArray);
+    console.log("userArray[currentUserIndex].habitArray in createNewHabit funct: ", userArray[currentUserIndex].habitArray);
 }
 
-function createNewHabitGrid(){
+function createNewHabitGrid(habitIndex){
     const habitCell = document.querySelector('.tracking-cell');
     const newDiv = document.createElement('div');
     newDiv.classList.add('month-cell');
     habitCell.appendChild(newDiv);
-    fillGrid(newDiv);
+    fillGrid(newDiv, habitIndex);
+}
+
+function fillGrid(targetCell, habitIndex){
+    for(let i = 0; i < 31; i++){
+        const newDiv = document.createElement('div');
+        userArray[currentUserIndex].habitArray[habitIndex].habitData[i] ? 
+            newDiv.classList.add('selected-month-day-cell'): 
+            newDiv.classList.add('month-day-cell');
+        newDiv.addEventListener('click', () => {
+            userArray[currentUserIndex].habitArray[habitIndex].habitData[i] = !userArray[currentUserIndex].habitArray[habitIndex].habitData[i];
+            userArray[currentUserIndex].habitArray[habitIndex].habitData[i] ? 
+                newDiv.classList.replace('month-day-cell', 'selected-month-day-cell') : 
+                newDiv.classList.replace('selected-month-day-cell', 'month-day-cell');       
+            localStorage.setItem('userArray', JSON.stringify(userArray));
+        })
+    targetCell.appendChild(newDiv);
+    }
 }
 
 function createNewHabitLabel(habit){
