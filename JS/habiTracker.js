@@ -1,32 +1,5 @@
-let habitArray = [];
-let userArray = JSON.parse(localStorage.userArray);
-console.log(userArray);
 
-let currentUser = JSON.parse(localStorage.currentUser);
-console.log(currentUser);
-
-let currentUserIndex = JSON.parse(localStorage.currentUserIndex);
-console.log(currentUserIndex);
-
-console.log(userArray[currentUserIndex]);
-
-
-habitArray = currentUser.data;
-console.log(habitArray);
-
-let count = 0;
-for(let habit of userArray[currentUserIndex].data){
-    createNewHabitLabel(userArray[currentUserIndex].data[count].habit);
-    createNewHabitGrid();
-    count++;
-}
-
-console.log(habitArray);
-console.log(localStorage);
-
-
-
-document.querySelector('#name-heading').innerText = userArray[currentUserIndex].username;
+////--------Classes, Variables, and Selectors------------------------
 
 class Habit {
     constructor(habit) {
@@ -35,8 +8,23 @@ class Habit {
     }
 }
 
+let habitArray = [];
+
+let userArray = JSON.parse(localStorage.userArray);
+
+let currentUser = JSON.parse(localStorage.currentUser);
+
+let currentUserIndex = JSON.parse(localStorage.currentUserIndex);
+
 
 const logoutButton = document.querySelector('#logout-button');
+const clearButton = document.querySelector('#clear-button');
+const form = document.querySelector('#habit-input-form');
+const monthCell = document.querySelector('.month-cell');
+
+//--------Event listeners------------------------
+
+
 logoutButton.addEventListener('click', (e) => {
     e.preventDefault(); 
     currentUserIndex = null;
@@ -44,7 +32,7 @@ logoutButton.addEventListener('click', (e) => {
     window.location.href = './index.html';
 });
 
-const clearButton = document.querySelector('#clear-button');
+
 clearButton.addEventListener('click', (e) => {
     e.preventDefault(); 
     userArray[currentUserIndex].data = [];
@@ -54,9 +42,31 @@ clearButton.addEventListener('click', (e) => {
 
 
 
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // This will stop the form from navigating to the new page on submission.
+    const input = document.querySelector('#habit-input');
+    createNewHabit(input.value);
+    createNewHabitLabel(input.value);
+    createNewHabitGrid();
+    input.value = "";
+})
 
-const monthCell = document.querySelector('.month-cell');
+
+//--------On Load------------------------
+
+document.querySelector('#name-heading').innerText = userArray[currentUserIndex].username;
+habitArray = currentUser.data;
 fillMonth(monthCell);
+
+let count = 0;
+for(let habit of userArray[currentUserIndex].data){
+    createNewHabitLabel(userArray[currentUserIndex].data[count].habit);
+    createNewHabitGrid();
+    count++;
+}
+
+//--------Functions------------------------
+
 
 function fillMonth(targetCell){
     for(let i = 0; i < 31; i++){
@@ -79,19 +89,6 @@ function fillGrid(targetCell){
     targetCell.appendChild(newDiv);
     }
 }
-
-
-// Event listener for habit input form
-const form = document.querySelector('#habit-input-form');
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault(); // This will stop the form from navigating to the new page on submission.
-    const input = document.querySelector('#habit-input');
-    createNewHabit(input.value);
-    createNewHabitLabel(input.value);
-    createNewHabitGrid();
-    input.value = "";
-})
 
 function createNewHabit(habit){
     const newHabit = new Habit(habit);

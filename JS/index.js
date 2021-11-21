@@ -1,13 +1,4 @@
-//Variables and Classes
-
-let userArray = [];
-let currentUser = {};
-
-if(localStorage.userArray){
-    userArray = JSON.parse(localStorage.userArray);
-}
-console.log(`Current number of registered users: ${userArray.length}`);
-console.log(userArray);
+//--------Classes, Variables, and Selectors------------------------
 
 class UserProfile {
     constructor(username, password) {
@@ -17,24 +8,31 @@ class UserProfile {
     }
 }
 
-  // Event listener for habit input form
+let userArray = [];
+let currentUser = {};
+
+
+
+const loginForm = document.querySelector('#loginButton');
 const signUpForm = document.querySelector('#signUpButton');
+
+
+
+//--------Event listeners------------------------
 
 signUpForm.addEventListener('click', (e) => {
     e.preventDefault(); 
-    console.log("sign up event"); 
-    const newUser = createNewUser();
-    if(newUser && userArray.push(newUser)){
-        localStorage.setItem('userArray', JSON.stringify(userArray));
-        const userInput = document.querySelector('#sign-up-user');
-        let userIndex = indexOfUserCheck(userInput.value);
-        setCurrentUser(userIndex);
-        window.location.href = './habiTracker.html';
+        console.log("sign up event"); 
+        const newUser = createNewUser();
+        if(newUser && userArray.push(newUser)){
+            localStorage.setItem('userArray', JSON.stringify(userArray));
+            const userInput = document.querySelector('#sign-up-user');
+            const userIndex = indexOfUserCheck(userInput.value);
+            setCurrentUser(userIndex);
+            window.location.href = './habiTracker.html';
+        } 
     } 
-} 
 );
-
-const loginForm = document.querySelector('#loginButton');
 
 loginForm.addEventListener('click', (e) => {
     e.preventDefault();
@@ -42,9 +40,18 @@ loginForm.addEventListener('click', (e) => {
     loginUser();
 });
 
+//--------On Load------------------------
+
+if(localStorage.userArray){
+    userArray = JSON.parse(localStorage.userArray);
+}
+
+//--------Functions------------------------
+
 function createNewUser(){
     const userInput = document.querySelector('#sign-up-user');
     const passInput = document.querySelector('#sign-up-pass');
+
     if(userExistenceCheck(userInput.value)){
         const label = document.querySelector('#sign-up-label');
         const oldP = document.querySelector('.warning');
@@ -77,12 +84,11 @@ function userExistenceCheck(userName){
     return false;
 }
 
-
-
 function loginUser(){
     const userInput = document.querySelector('#login-user');
     const passInput = document.querySelector('#login-pass');
-    let userIndex = indexOfUserCheck(userInput.value);
+    const userIndex = indexOfUserCheck(userInput.value);
+
     if(!userExistenceCheck(userInput.value)){
         const label = document.querySelector('#login-label');
         const oldP = document.querySelector('.warning');
@@ -105,9 +111,6 @@ function loginUser(){
         label.insertAdjacentElement('afterend', newP);
     }
 }
-
-
-
 
 function indexOfUserCheck(userInput){
     userCount = 0;
