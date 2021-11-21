@@ -11,18 +11,13 @@ class UserProfile {
 let userArray = [];
 let currentUser = {};
 
-
-
 const loginForm = document.querySelector('#loginButton');
 const signUpForm = document.querySelector('#signUpButton');
-
-
 
 //--------Event listeners------------------------
 
 signUpForm.addEventListener('click', (e) => {
-    e.preventDefault(); 
-        console.log("sign up event"); 
+    e.preventDefault();  
         const newUser = createNewUser();
         if(newUser && userArray.push(newUser)){
             localStorage.setItem('userArray', JSON.stringify(userArray));
@@ -36,15 +31,12 @@ signUpForm.addEventListener('click', (e) => {
 
 loginForm.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log("log in event"); 
     loginUser();
 });
 
 //--------On Load------------------------
 
-if(localStorage.userArray){
-    userArray = JSON.parse(localStorage.userArray);
-}
+if(localStorage.userArray) userArray = JSON.parse(localStorage.userArray);
 
 //--------Functions------------------------
 
@@ -73,14 +65,9 @@ function createNewUser(){
 function userExistenceCheck(userName){
     for(let user of userArray){
         if(user.username != null){
-            console.log(`compare:${user.username} to ${userName}`);
-            if(user.username === userName){
-                console.log('username already exists!');
-                return true;
-            }
+            if(user.username === userName) return true;
         }
     }
-    console.log('username does not exist!');
     return false;
 }
 
@@ -115,22 +102,13 @@ function loginUser(){
 function indexOfUserCheck(userInput){
     userCount = 0;
     for(let user of userArray){
-        console.log(`${user.username} vs ${userInput}`)
-        if(user.username === userInput){
-            console.log(`username exists at index ${userCount}`);
-            return userCount;
-        }
+        if(user.username === userInput) return userCount;
         userCount++;
     }
 }
 
 function passCheck(index, passInput){
-    console.log(`compare: ${userArray[index].password} to ${passInput}`);
-        if(userArray[index].password === passInput){
-            console.log('password matches');
-            return true;
-        }
-        console.log('password does not match');
+        if(userArray[index].password === passInput) return true;
     return false;
 }
 
