@@ -113,7 +113,6 @@ function createNewHabitLabel(habit){
     habitCell.appendChild(newDiv);
     const newInnerDiv = document.createElement('div');
     newInnerDiv.classList.add('inner-habit-cell-label');
-    console.dir(newInnerDiv);
     newInnerDiv.innerText = habit;
     newDiv.appendChild(newInnerDiv);
 
