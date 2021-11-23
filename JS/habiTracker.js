@@ -47,8 +47,10 @@ form.addEventListener('submit', (e) => {
 })
 
 //--------On Load------------------------
+currentUserIndex ?
+    document.querySelector('#name-heading').innerText = `Current User: ${userArray[currentUserIndex].username}`:
+    document.querySelector('#name-heading').innerText = 'No User Logged In';
 
-document.querySelector('#name-heading').innerText = `Current User: ${userArray[currentUserIndex].username}`;
 document.querySelector('#name-heading').style.textDecoration = 'underLine';
 
 fillMonth(monthCell);
@@ -115,5 +117,4 @@ function createNewHabitLabel(habit){
     newInnerDiv.classList.add('inner-habit-cell-label');
     newInnerDiv.innerText = habit;
     newDiv.appendChild(newInnerDiv);
-
 }

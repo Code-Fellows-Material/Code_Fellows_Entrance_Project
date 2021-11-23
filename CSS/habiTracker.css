@@ -89,7 +89,6 @@ main {
   align-items: center;
   border-radius: 10%;
   cursor: default;
-  transition: 0.5s all;
 }
 
 .selected-month-day-cell {
